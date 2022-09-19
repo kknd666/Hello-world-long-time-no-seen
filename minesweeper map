@@ -1,0 +1,72 @@
+<script>
+function initMap() {
+  var latitude = 49.11431412234063;
+  var longitude = 37.590421731468886;
+  var numberboxes = 40; // number of boxes
+  var distance = 0.5; // in Kilometer
+  let map = new
+  google.maps.Map(document.getElementById("map") , {
+      zoom: 10,
+      center: { lat: latitude, lng: longitude },
+      mapTypeId: "satellite",
+    });
+
+    for (let x = 0-(numberboxes/2); x < (numberboxes/2); x++) {
+     for (let y = 0-(numberboxes/2); y < (numberboxes/2); y++) {
+    let checkers = true;
+   const rectangle = new google.maps.Rectangle({
+     strokeColor: "#FF0000",
+     strokeOpacity: 0.8,
+     strokeWeight: 2,
+     fillColor: "#FF0000",
+     fillOpacity: 0,
+     map,
+     bounds: {
+       north: latitude+(0.009distancex),
+       south: latitude+(0.009distance(x+1)),
+       east: longitude+(0.013583distance(y+1)),
+       west: longitude+(0.013583distancey),
+     },
+   }); 
+   rectangle.addListener("click", () => {
+  if (checkers) {
+    rectangle.setValues({
+      strokeColor: "#FF0000",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: "#FF0000",
+      fillOpacity: 1,
+      map,
+      bounds: {
+   north: latitude+(0.009distancex),
+        south: latitude+(0.009distance(x+1)),
+        east: longitude+(0.013583distance(y+1)),
+        west: longitude+(0.013583distancey),
+      }, //bounds
+  }  );//setvalues
+  checkers=!checkers;
+  }
+  else
+    {
+    rectangle.setValues({
+      strokeColor: "#FF0000",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: "#FF0000",
+      fillOpacity: 0,
+      map,
+      bounds: {
+     north: latitude+(0.009distancex),
+        south: latitude+(0.009distance(x+1)),
+        east: longitude+(0.013583distance(y+1)),
+        west: longitude+(0.013583distancey),
+      }, //bounds
+  }  );//setvalues
+  checkers=!checkers;
+  }
+   }); 
+
+ }}
+}
+
+</script>
